@@ -40,9 +40,17 @@ function createBtn(arr) {
     for (let i = 0; i < arr.length; i++) {
         const answerBtn = document.createElement("button")
         answerBtn.textContent = arr[i]
+        let hasAnswered = false
         answerBtn.addEventListener("click", function () {
-            if (answerBtn.textContent === questions[i].correct) {
+
+            if(hasAnswered === true) {
+                alert("Already answered")
+                return
+            }
+
+            if (answerBtn.textContent === questions[currentIndex].correct) {
                 alert("Correct")
+                hasAnswered = true
                 score.textContent++
             } else {
                 alert("try again")
@@ -58,6 +66,6 @@ nextBtn.addEventListener("click", function () {
         return
     }
     currentIndex++
+    answers.textContent = ""
     currentQuestion(currentIndex)
-
 })
