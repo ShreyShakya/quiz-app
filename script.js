@@ -23,6 +23,7 @@ const questions = [
 
 const question = document.querySelector("#question")
 const answers = document.querySelector("#answers")
+const feedback = document.querySelector("#feedback")
 const score = document.querySelector("#score")
 const nextBtn = document.querySelector("#nextButton")
 const restartBtn = document.querySelector("#restartButton")
@@ -50,8 +51,10 @@ function createBtn(arr) {
 
             if (answerBtn.textContent === questions[currentIndex].correct) {
                 score.textContent++
+                feedback.textContent = "Correct!"
             } else {
                 answerBtn.classList.add("wrongColor")
+                feedback.textContent = `Wrong! The correct answer is ${questions[currentIndex].correct}.`
             }
 
             for (let i = 0; i < answers.children.length; i++) {
@@ -62,7 +65,8 @@ function createBtn(arr) {
             }
 
             if (currentIndex === questions.length - 1) {
-                result.textContent = `Quiz complete! You got ${score.textContent} correct`
+                const percentage = score.textContent / questions.length * 100
+                result.textContent = `Quiz complete! You got ${score.textContent} correct - ${percentage}%`
                 nextBtn.disabled = true
                 return
             }
@@ -75,11 +79,13 @@ function createBtn(arr) {
 nextBtn.addEventListener("click", function() {
     currentIndex++
     answers.textContent = ""
+    feedback.textContent = ""
     currentQuestion(currentIndex)
 })
 
 restartBtn.addEventListener("click", function() { 
     currentIndex = 0
+    feedback.textContent = ""
     score.textContent = 0
     answers.textContent = ""
     result.textContent = ""
