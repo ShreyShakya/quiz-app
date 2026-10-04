@@ -25,6 +25,7 @@ const question = document.querySelector("#question")
 const answers = document.querySelector("#answers")
 const score = document.querySelector("#score")
 const nextBtn = document.querySelector("#nextButton")
+const result = document.querySelector("#result")
 
 let currentIndex = 0
 score.textContent = 0
@@ -58,7 +59,7 @@ function createBtn(arr) {
             }
 
             if (currentIndex === questions.length - 1) {
-                alert(`Quiz complete! You got ${score.textContent} correct`)
+                result.textContent = `Quiz complete! You got ${score.textContent} correct`
                 return
             }
         })
@@ -72,7 +73,7 @@ nextBtn.addEventListener("click", function () {
         alert("There are no more questions left!")
         return
     }
-    
+
     currentIndex++
     answers.textContent = ""
     currentQuestion(currentIndex)
