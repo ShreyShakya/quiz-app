@@ -39,16 +39,17 @@ function currentQuestion(i) {
 }
 
 function createBtn(arr) {
+    nextBtn.disabled = true
     for (let i = 0; i < arr.length; i++) {
         const answerBtn = document.createElement("button")
         answerBtn.textContent = arr[i]
         answerBtn.addEventListener("click", function () {
 
+            nextBtn.disabled = false
+
             if (answerBtn.textContent === questions[currentIndex].correct) {
-                alert("Correct")
                 score.textContent++
             } else {
-                alert("wrong!")
                 answerBtn.classList.add("wrongColor")
             }
 
@@ -61,6 +62,7 @@ function createBtn(arr) {
 
             if (currentIndex === questions.length - 1) {
                 result.textContent = `Quiz complete! You got ${score.textContent} correct`
+                nextBtn.disabled = true
                 return
             }
         })
@@ -70,11 +72,6 @@ function createBtn(arr) {
 }
 
 nextBtn.addEventListener("click", function() {
-    if (currentIndex === questions.length - 1) {
-        alert("There are no more questions left!")
-        return
-    }
-
     currentIndex++
     answers.textContent = ""
     currentQuestion(currentIndex)
