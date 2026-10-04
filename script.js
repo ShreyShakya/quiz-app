@@ -56,7 +56,13 @@ function createBtn(arr) {
                     answers.children[i].classList.add("correctColor")
                 }
             }
+
+            if (currentIndex === questions.length - 1) {
+                alert(`Quiz complete! You got ${score.textContent} correct`)
+                return
+            }
         })
+
         answers.append(answerBtn)
     }
 }
@@ -66,6 +72,7 @@ nextBtn.addEventListener("click", function () {
         alert("There are no more questions left!")
         return
     }
+    
     currentIndex++
     answers.textContent = ""
     currentQuestion(currentIndex)
