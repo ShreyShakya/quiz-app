@@ -37,7 +37,6 @@ function currentQuestion(i) {
 }
 
 function createBtn(arr) {
-    let hasAnswered = false
     for (let i = 0; i < arr.length; i++) {
         const answerBtn = document.createElement("button")
         answerBtn.textContent = arr[i]
@@ -45,16 +44,17 @@ function createBtn(arr) {
 
             if (answerBtn.textContent === questions[currentIndex].correct) {
                 alert("Correct")
-                hasAnswered = true
                 score.textContent++
             } else {
                 alert("wrong!")
-                hasAnswered = true
+                answerBtn.classList.add("wrongColor")
             }
 
             for (let i = 0; i < answers.children.length; i++) {
-                answers.children[i].classList.add("answered")
                 answers.children[i].disabled = true
+                if (answers.children[i].textContent === questions[currentIndex].correct) {
+                    answers.children[i].classList.add("correctColor")
+                }
             }
         })
         answers.append(answerBtn)
