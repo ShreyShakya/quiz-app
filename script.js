@@ -27,13 +27,14 @@ const score = document.querySelector("#score")
 const nextBtn = document.querySelector("#nextButton")
 const restartBtn = document.querySelector("#restartButton")
 const result = document.querySelector("#result")
+const questionNumber = document.querySelector("#questionNumber")
 
 let currentIndex = 0
 score.textContent = 0
-
 currentQuestion(currentIndex)
 
 function currentQuestion(i) {
+    questionNumber.textContent = `Question ${i + 1} of ${questions.length}`
     question.textContent = questions[i].question
     createBtn(questions[i].answers)
 }
@@ -81,6 +82,6 @@ restartBtn.addEventListener("click", function() {
     currentIndex = 0
     score.textContent = 0
     answers.textContent = ""
-    currentQuestion(currentIndex)
     result.textContent = ""
+    currentQuestion(currentIndex)
 })
