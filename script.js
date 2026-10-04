@@ -43,11 +43,6 @@ function createBtn(arr) {
         answerBtn.textContent = arr[i]
         answerBtn.addEventListener("click", function () {
 
-            if (hasAnswered === true) {
-                alert("Already answered")
-                return
-            }
-
             if (answerBtn.textContent === questions[currentIndex].correct) {
                 alert("Correct")
                 hasAnswered = true
@@ -58,9 +53,8 @@ function createBtn(arr) {
             }
 
             for (let i = 0; i < answers.children.length; i++) {
-                if (hasAnswered === true) {
-                    answers.children[i].classList.add("answered")
-                }
+                answers.children[i].classList.add("answered")
+                answers.children[i].disabled = true
             }
         })
         answers.append(answerBtn)
