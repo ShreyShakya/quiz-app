@@ -37,13 +37,13 @@ function currentQuestion(i) {
 }
 
 function createBtn(arr) {
+    let hasAnswered = false
     for (let i = 0; i < arr.length; i++) {
         const answerBtn = document.createElement("button")
         answerBtn.textContent = arr[i]
-        let hasAnswered = false
         answerBtn.addEventListener("click", function () {
 
-            if(hasAnswered === true) {
+            if (hasAnswered === true) {
                 alert("Already answered")
                 return
             }
@@ -53,7 +53,8 @@ function createBtn(arr) {
                 hasAnswered = true
                 score.textContent++
             } else {
-                alert("try again")
+                alert("wrong!")
+                hasAnswered = true
             }
         })
         answers.append(answerBtn)
