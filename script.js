@@ -56,6 +56,12 @@ function createBtn(arr) {
                 alert("wrong!")
                 hasAnswered = true
             }
+
+            for (let i = 0; i < answers.children.length; i++) {
+                if (hasAnswered === true) {
+                    answers.children[i].classList.add("answered")
+                }
+            }
         })
         answers.append(answerBtn)
     }
