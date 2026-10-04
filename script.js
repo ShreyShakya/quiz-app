@@ -25,6 +25,7 @@ const question = document.querySelector("#question")
 const answers = document.querySelector("#answers")
 const score = document.querySelector("#score")
 const nextBtn = document.querySelector("#nextButton")
+const restartBtn = document.querySelector("#restartButton")
 const result = document.querySelector("#result")
 
 let currentIndex = 0
@@ -68,7 +69,7 @@ function createBtn(arr) {
     }
 }
 
-nextBtn.addEventListener("click", function () {
+nextBtn.addEventListener("click", function() {
     if (currentIndex === questions.length - 1) {
         alert("There are no more questions left!")
         return
@@ -77,4 +78,12 @@ nextBtn.addEventListener("click", function () {
     currentIndex++
     answers.textContent = ""
     currentQuestion(currentIndex)
+})
+
+restartBtn.addEventListener("click", function() { 
+    currentIndex = 0
+    score.textContent = 0
+    answers.textContent = ""
+    currentQuestion(currentIndex)
+    result.textContent = ""
 })
