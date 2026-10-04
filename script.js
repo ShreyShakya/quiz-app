@@ -23,7 +23,7 @@ const questions = [
 
 const question = document.querySelector("#question")
 const answers = document.querySelector("#answers")
-const feedback = document.querySelector("#feedback")
+// const feedback = document.querySelector("#feedback")
 const score = document.querySelector("#score")
 const nextBtn = document.querySelector("#nextButton")
 const restartBtn = document.querySelector("#restartButton")
@@ -31,7 +31,7 @@ const result = document.querySelector("#result")
 const questionNumber = document.querySelector("#questionNumber")
 
 let currentIndex = 0
-score.textContent = 0
+let scoreCount = 0
 currentQuestion(currentIndex)
 
 function currentQuestion(i) {
@@ -50,11 +50,12 @@ function createBtn(arr) {
             nextBtn.disabled = false
 
             if (answerBtn.textContent === questions[currentIndex].correct) {
-                score.textContent++
-                feedback.textContent = "Correct!"
+                scoreCount++
+                score.textContent = `Score: ${scoreCount}`
+                // feedback.textContent = "Correct!"
             } else {
                 answerBtn.classList.add("wrongColor")
-                feedback.textContent = `Wrong! The correct answer is ${questions[currentIndex].correct}.`
+                // feedback.textContent = `Wrong! The correct answer is ${questions[currentIndex].correct}.`
             }
 
             for (let i = 0; i < answers.children.length; i++) {
@@ -65,8 +66,8 @@ function createBtn(arr) {
             }
 
             if (currentIndex === questions.length - 1) {
-                const percentage = score.textContent / questions.length * 100
-                result.textContent = `Quiz complete! You got ${score.textContent} correct - ${percentage}%`
+                const percentage = scoreCount / questions.length * 100
+                result.textContent = `You got ${scoreCount} correct - ${percentage}%`
                 nextBtn.disabled = true
                 return
             }
@@ -76,17 +77,18 @@ function createBtn(arr) {
     }
 }
 
-nextBtn.addEventListener("click", function() {
+nextBtn.addEventListener("click", function () {
     currentIndex++
     answers.textContent = ""
-    feedback.textContent = ""
+    // feedback.textContent = ""
     currentQuestion(currentIndex)
 })
 
-restartBtn.addEventListener("click", function() { 
+restartBtn.addEventListener("click", function () {
     currentIndex = 0
-    feedback.textContent = ""
-    score.textContent = 0
+    // feedback.textContent = ""
+    scoreCount = 0
+    score.textContent = "Score: 0"
     answers.textContent = ""
     result.textContent = ""
     currentQuestion(currentIndex)

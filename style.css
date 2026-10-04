@@ -1,9 +1,115 @@
-.wrongColor {
-    background-color: red;
+body {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffff;
+}
+
+h1 {
+    color: gray;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+#answers button.wrongColor {
+    background-color: #BD4444;
     color: white;
 }
 
-.correctColor {
-    background-color: limegreen;
+#answers button.correctColor {
+    background-color: #06D6A0;
     color: white;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 700px;
+    height: 400px;
+    background-color: #FF788D;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#question-div {
+    margin-left: 12px;
+    margin-right: 12px;
+    display: grid;
+    grid-template-rows: auto 1fr auto auto 1fr;
+}
+
+#answers {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+#questionNumber {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#question {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#controlBtn {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-right: 16px;
+    column-gap: 3px;
+}
+
+#controlBtn button {
+    border-style: solid;
+    border-width: 1.5px ;
+    border-color: #e2e8f0;
+    background-color: #F7F2EB;
+    color: #4a5568;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#answers button {
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 10px;
+    border-style: solid;
+    padding: 14px 20px;
+    margin: 4px;
+    background-color: #F7F2EB;
+    color: #4a5568;
+    border: 2px solid #e2e8f0;
+    cursor: pointer;
+    text-align: left;
+    transition: 0.3s;
+}
+
+#answers button:hover {
+    transform: scale(103%)
+}
+
+#answers button:disabled:hover {
+    transform: none;
+}
+
+#score {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 30px;
+}
+
+#result {
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
